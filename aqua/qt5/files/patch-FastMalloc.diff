@@ -1,0 +1,13 @@
+--- Source/WTF/wtf/FastMalloc.cpp	2017-11-08 11:15:23.000000000 -0500
++++ Source/WTF/wtf/FastMalloc.cpp	2020-11-22 12:13:25.000000000 -0500
+@@ -628,7 +628,9 @@
+ // sense.  In particular, if kMaxSize increases, you may have to
+ // increase kNumClasses as well.
+ #if OS(DARWIN)
+-#    define K_PAGE_SHIFT PAGE_SHIFT
++#    //define K_PAGE_SHIFT PAGE_SHIFT
++#    // Big Sur does weeird things with PAGE_SHIFT - but seems to set it to 12
++#    define K_PAGE_SHIFT 12
+ #    if (K_PAGE_SHIFT == 12)
+ #        define K_NUM_CLASSES 68
+ #    elif (K_PAGE_SHIFT == 14)
