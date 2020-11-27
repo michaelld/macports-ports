@@ -1435,9 +1435,10 @@ foreach {module module_info} [array get modules] {
 
             # special case
             if { ${module} eq "qtquick3d" } {
-                # see config_help.txt
-                configure.post_args-append   -- \
-                                             -system-assimp
+                # disabled in 5.15.2 - linker looks for system assimp first
+                ## see config_help.txt
+                #configure.post_args-append   -- \
+                #                             -system-assimp
             }
 
             # special case
